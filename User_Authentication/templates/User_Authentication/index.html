@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body_block %}
+     {% if user.is_authenticated %}
+    <nav class="navbar navbar-expand-custom navbar-mainbg">
+        <a class="navbar-brand navbar-logo" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <i class="fas fa-bars text-white"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <div class="hori-selector">
+                    <div class="left"></div>
+                    <div class="right"></div>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-address-book"></i>Address Book</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="javascript:void(0);"><i class="far fa-calendar-alt"></i>Calendar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'register_user' %}"><i class="far fa-chart-bar"></i>Sign up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'login_user' %}"><i class="far fa-chart-bar"></i>Sign in</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout_attempt' %}"><i class="far fa-copy"></i>Logout</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container mt-5 ml-3 mr-3 text-color:red ">
+        <marquee width="100%" direction="right" height="500px"  scrollamount="10"><b>
+             Welcome to my Index Page
+        </b>
+        </marquee>
+    </div>
+      {% else %}
+        <ul class="navbar-nav ml-auto mb-2 mb-lg-0 bg-dark">
+            <li class="nav-item">
+                <a class="nav-link m-3 active text-white text-center" aria-current="page" href="{% url 'login_user' %}">Sign
+                    in</a>
+            </li>
+        </ul>
+    {% endif %}
+{% endblock %}
